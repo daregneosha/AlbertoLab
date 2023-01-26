@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data from file</title>
+<style>
+body {
+  background-image: url("baba.jpg");
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+.data {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="data">
+  <h1>Num of giri: </h1>
+  <p id="data"></p>
+</div>
+
+<script>
+  function loadData() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("data").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "data.txt", true);
+    xhttp.send();
+  }
+  loadData();
+  setInterval(loadData,50000); 
+</script>
+
+</body>
+</html>
